@@ -17,7 +17,7 @@ setopt prompt_subst
 prompt='# %F{yellow}%1~%f $(git_branch_name)%F{green}>%f '
 
 #aliases
-source .aliases
+source $HOME/.dotfiles/.aliases
 alias zshconfig="vim ~/.zshrc"
 alias sz='source ~/.zshrc'
 alias dotfiles='cd ~/.dotfiles'
