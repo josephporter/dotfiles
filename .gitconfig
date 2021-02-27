@@ -1,0 +1,22 @@
+[user]
+	name = Joseph Porter
+	email = 53451441+josephporter@users.noreply.github.com
+	signingkey = E35F2343
+[gpg]
+	program = /usr/local/MacGPG2/bin/gpg2
+[commit]
+	gpsign = true
+	gpgsign = true
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	up = rebase
+	ci = commit
+	ctags = !.git/hooks/ctags
+[core]
+	editor = vim
+	excludesfile = .gitignore
+	pager = less -FRX
+[init]
+	templatedir = .git_template

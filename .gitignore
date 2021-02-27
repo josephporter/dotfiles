@@ -1,0 +1,8 @@
+tags
+TAGS
+.python-version
+go.mod
+go.sum
+node_modules
+package.json
+package-lock.json
