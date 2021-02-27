@@ -1,6 +1,4 @@
-# Example aliases
-alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
+# aliases
 
 #Git
 alias gpf="git push --force-with-lease"
@@ -12,7 +10,10 @@ alias up="git ci -a --amend --no-edit"
 
 
 #Personal
+#zsh
 alias sz="source ~/.zshrc"
+alias zshconfig="vim ~/.zshrc"
+alias dotfiles='cd ~/.dotfiles'
 export JOURNAL_LOC="~/journal"
 alias journal="cd $JOURNAL_LOC"
 alias vimsql="vim ~/dev/sql"
@@ -22,6 +23,7 @@ alias vnotes='vstandup'
 alias valiases='vim ~/.oh-my-zsh/custom/aliases.zsh' 
 alias vdezsh="vim ~/.oh-my-zsh/custom/de.zsh" 
 alias rm='rm -iv'
+
 # Software Eng Aliases and ENV Variables
 
 # BIZ docs

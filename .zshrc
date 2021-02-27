@@ -16,7 +16,8 @@ setopt prompt_subst
 # Config for prompt. PS1 synonym.
 prompt='# %F{yellow}%1~%f $(git_branch_name)%F{green}>%f '
 
-# Example aliases
+#aliases
+source .aliases
 alias zshconfig="vim ~/.zshrc"
 alias sz='source ~/.zshrc'
 alias dotfiles='cd ~/.dotfiles'
