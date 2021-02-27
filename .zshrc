@@ -18,16 +18,10 @@ prompt='# %F{yellow}%1~%f $(git_branch_name)%F{green}>%f '
 
 #aliases
 source $HOME/.dotfiles/.aliases
-alias zshconfig="vim ~/.zshrc"
-alias sz='source ~/.zshrc'
-alias dotfiles='cd ~/.dotfiles'
 
 # Unset LESS
 unset LESS;
 #
-#MENTAT
-export MENTAT__CONFIG_PATH='/Users/joseph.porter/repos/mentat/mentat.cfg'
-export PATH=$PATH:~/bin
 
 # Resources
 # https://medium.com/pareture/simplest-zsh-prompt-configs-for-git-branch-name-3d01602a6f33
