@@ -20,8 +20,10 @@ prompt='# %F{yellow}%1~%f $(git_branch_name)%F{green}>%f '
 source $HOME/.dotfiles/.aliases
 
 # Unset LESS
-unset LESS;
-#
+# unset LESS;
+
+#FASD
+eval "$(fasd --init auto)"
 
 # Resources
 # https://medium.com/pareture/simplest-zsh-prompt-configs-for-git-branch-name-3d01602a6f33
