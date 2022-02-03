@@ -2,7 +2,8 @@
 
 #Git
 alias gpf="git push --force-with-lease"
-alias refresh="git co master && git pull && git co - && git rebase master"
+alias refresh="git co main && git pull && git co - && git rebase main"
+alias refreshMaster="git co master && git pull && git co - && git rebase master"
 alias refreshOhm="git co trunk && git pull && git co - && git rebase trunk"
 alias glops='git log -p -S'
 alias upf="git ci -a --amend --no-edit && git push --force-with-lease"
@@ -18,8 +19,8 @@ export JOURNAL_LOC="~/journal"
 export DATE=`date +%F`
 alias journal="cd $JOURNAL_LOC"
 alias vimsql="vim ~/dev/sql"
-alias vjournal='vim $JOURNAL_LOC/$(date +%F).txt' 
-alias vstandup='journal && vim de/"$(date +%F)".txt' 
+alias vjournal='journal && vim $(date +%F).txt' 
+alias vstandup='journal && cd de && vim "$(date +%F)".txt' 
 alias vnotes='vim $JOURNAL_LOC/de/$DATE.txt'
 alias valiases='vim ~/.dotfiles/.aliases' 
 alias rm='rm -iv'
@@ -30,17 +31,19 @@ alias vimrc='vim ~/.dotfiles/.vimrc'
 alias v='f -e vim' 
 alias o='a -e open'
 
-# search Docs
+# search Real Python
 alias rp="open https://realpython.com"
 
 # Software Eng Aliases and ENV Variables
+export REPOS="$HOME/repos"
+alias repos="cd $REPOS"
 
 # BIZ docs
-export BIZ_DOCS_LOC="$HOME/repos/biz.warby.io"
+export BIZ_DOCS_LOC="$REPOS/tech/biz.warby.io"
 alias bizdocs="cd $BIZ_DOCS_LOC"
 
 # helios
-export HELIOS="$HOME/repos/helios"
+export HELIOS="$REPOS/tech/helios"
 alias helios="cd $HELIOS"
 
 # ohm
@@ -50,14 +53,17 @@ alias goOhm="cd $OHM_LOC"
 
 # bluesteel
 export HELIOS_ADMIN_VERSION="joseph-fix"
-export BLUESTEEL="$HOME/repos/bluesteel"
+export BLUESTEEL="$REPOS/tech/bluesteel"
 alias bluesteel="cd $BLUESTEEL"
 alias bluetest="bluesteel && make helios-test"
 
-# Python
+# PyEnv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+# PyEnv Virtual Env
+eval "$(pyenv virtualenv-init -)"
 
 # Go
 export GO_JIRA="$(go env GOPATH)/src/github.com/go-jira"
@@ -74,7 +80,7 @@ alias ecom="vfab && fab aws.use_ohm:ecom,"
 # Shortcuts
 
 # mentat
-export MENTAT_LOC="$HOME/repos/mentat"
+export MENTAT_LOC="$REPOS/data/mentat"
 alias gmentat="cd $MENTAT_LOC"
 alias tasks="cd $MENTAT_LOC/mentat/tasks"
 alias vtasks="tasks && vim ."
@@ -83,22 +89,23 @@ alias 2h2k="tasks && vim helios_to_kaitain_v2"
 
 
 # arrakis 
-export ARRAKIS_LOC="$HOME/repos/arrakis"
+export ARRAKIS_LOC="$REPOS/data/arrakis"
 alias garrakis="cd $ARRAKIS_LOC"
 
 
 # de-airflow 
-export DE_AIRFLOW_LOC="$HOME/repos/data-engineering-airflow"
+export DE_AIRFLOW_LOC="$REPOS/data/data-engineering-airflow"
 alias de-airflow="cd $DE_AIRFLOW_LOC"
+alias restart_airflow="make stop_airflow && make start_airflow"
 
 
 # de-infra
-export DE_INFRA_LOC="$HOME/repos/data-engineering-infrastructure"
+export DE_INFRA_LOC="$REPOS/data/data-engineering-infrastructure"
 alias de-infra="cd $DE_INFRA_LOC"
 
 
 # de-infra-tools
-export DE_INFRA_TOOLS_LOC="$HOME/repos/data-engineering-infrastructure-tools"
+export DE_INFRA_TOOLS_LOC="$REPOS/data/data-engineering-infrastructure-tools"
 alias de-infra-tools="cd $DE_INFRA_TOOLS_LOC"
 
 
@@ -117,22 +124,3 @@ export PATH=$PATH:~/bin
 
 # H2K2
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
-#Custom funcs
-timer() {
-    sleep $(echo "$1 * 60" | bc) 
-    afplay /System/Library/Sounds/Ping.aiff
-}
-
-# Set WarbyParker AWS profile
-export AWS_PROFILE=warby-today
-#export AWS_PROFILE=default
-#AWS MFA
-awsume-op() {
-    # Wrapper around 1password-client (op) and awsume to allow a single invocation
-    # + password to create temporary credentials
-    # Needs awsume https://awsu.me/general/quickstart.html
-    # Install via: brew install awsume
-    # Needs 1password client, install via: `brew cask install 1password-cli`
-    eval "$(op signin warbyparker)"
-    /usr/local/bin/awsume warbyparker --mfa-token "$(op get totp 'Amazon')" --output-profile warby-today
-  }

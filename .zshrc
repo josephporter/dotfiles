@@ -29,15 +29,4 @@ eval "$(fasd --init auto)"
 # https://medium.com/pareture/simplest-zsh-prompt-configs-for-git-branch-name-3d01602a6f33
 #
 
-# READ ONLY HELIO PROD DB ACCESS
-function gsts()
-{
-  RDSHOST="awsprod-helios-pgsql-overlord.cuakayfqf72t.us-east-1.rds.amazonaws.com"
-  PORT="5432"
-  REGION="us-east-1"
-  USERNAME="helios_readonly"
-  TOKEN="$(aws rds generate-db-auth-token --hostname $RDSHOST --port $PORT --region $REGION --username $USERNAME)"
-  echo $TOKEN
-}
-
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES

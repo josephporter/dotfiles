@@ -9,6 +9,7 @@ set expandtab
 set noswapfile
 set path=.,**
 set nu
+set ruler
 
 " Faster buffer navigation
 nnoremap ,b :buffer *
@@ -32,3 +33,5 @@ nnoremap ,v :vert sfind *
 
 " Black Plugin
 autocmd BufWritePre *.py execute ':Black'
+autocmd BufWritePre *.tf execute ':Black'
+
