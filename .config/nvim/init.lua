@@ -1,0 +1,1 @@
+require("joseph_nvim")
