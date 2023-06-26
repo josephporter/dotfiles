@@ -19,14 +19,26 @@ prompt='# %F{yellow}%1~%f $(git_branch_name)%F{green}>%f '
 #aliases
 source $HOME/.dotfiles/.aliases
 
-# Unset LESS
-# unset LESS;
+#functions
+source $HOME/.dotfiles/.functions
 
 #FASD
 eval "$(fasd --init auto)"
+
+#pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
+# PyEnv Virtual Env
+eval "$(pyenv virtualenv-init -)"
+
+# tfenv
+export TFENV_PATH="/usr/local/bin/tfenv"
+export PATH="$TFENV_PATH/bin:$PATH"
 
 # Resources
 # https://medium.com/pareture/simplest-zsh-prompt-configs-for-git-branch-name-3d01602a6f33
 #
 
-export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES

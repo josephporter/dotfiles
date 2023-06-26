@@ -32,6 +32,7 @@ nnoremap ,f :find *
 nnoremap ,v :vert sfind *
 
 " Black Plugin
-autocmd BufWritePre *.py execute ':Black'
-autocmd BufWritePre *.tf execute ':Black'
+" autocmd BufWritePre *.py execute ':Black'
 
+" fzf
+set rtp+=/usr/local/opt/fzf
